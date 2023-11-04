@@ -70,6 +70,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     
+                    <!-- Left control bar -->
                     <Border Grid.Column="0" BorderThickness="0,0,2,0" Padding="10,0,10,0">
                         <Border.BorderBrush>
                             <SolidColorBrush Color="Gray" Opacity="0.5"/>
@@ -96,21 +97,24 @@
                                             FontFamily="Segoe MDL2 Assets"
                                             BorderBrush="Transparent"
                                             Background="Transparent"
-                                            FontSize="12"/>
+                                            FontSize="12"
+                                            x:Name="BtnAddNote"/>
                                     
                                     <Button Grid.Column="1"
                                             Content="&#xE74E;"
                                             FontFamily="Segoe MDL2 Assets"
                                             BorderBrush="Transparent"
                                             Background="Transparent"
-                                            FontSize="12"/>
+                                            FontSize="12"
+                                            x:Name="BtnSaveNote"/>
                                 
                                     <Button Grid.Column="2"
                                             Content="&#xE74D;"
                                             FontFamily="Segoe MDL2 Assets"
                                             BorderBrush="Transparent"
                                             Background="Transparent"
-                                            FontSize="12"/>
+                                            FontSize="12"
+                                            x:Name="BtnDeleteNote"/>
                                 </Grid>
                             </Border>
                             
@@ -136,6 +140,17 @@
                             </ListView>
                         </Grid>
                     </Border>
+                    
+                    <!-- Note Area -->
+                    <Grid Grid.Column="1">
+                        <TextBox FontFamily="{StaticResource RalewayRegular}"
+                                 FontSize="14"
+                                 Padding="10"
+                                 Foreground="Black"
+                                 BorderBrush="Transparent"
+                                 Background="Transparent"
+                                 x:Name="NoteContent"/>
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>

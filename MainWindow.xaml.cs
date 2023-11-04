@@ -7,6 +7,13 @@ namespace InkLink
     /// </summary>
     public partial class MainWindow
     {
+        public class Note
+        {
+            public string Abbreviation { get; set; }
+            public string NoteName { get; set; }
+            public string Content { get; set; }
+        }
+        
         public MainWindow()
         {
             InitializeComponent();

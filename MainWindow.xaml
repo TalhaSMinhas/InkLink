@@ -118,13 +118,16 @@
                                 </Grid>
                             </Border>
                             
-                            <ListView Grid.Row="1" BorderBrush="Transparent" Background="Transparent" Margin="5,10,5,10">
+                            <ListView Grid.Row="1" BorderBrush="Transparent" 
+                                      Background="Transparent" 
+                                      Margin="5,10,5,10"
+                                      x:Name="NotesList">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="0.1*"/>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <Border Grid.Column="0" CornerRadius="10">
                                                 <Label x:Name="NoteLabelAbbreviation"
@@ -133,7 +136,9 @@
                                             <Label Grid.Column="1"
                                                    x:Name="NoteLabel"
                                                    FontFamily="{StaticResource RalewayRegular}"
-                                                   Margin="10,0,0,0"/>
+                                                   Margin="10,0,0,0"
+                                                   Foreground="Black"
+                                                   Content="{Binding NoteName}"/>
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>

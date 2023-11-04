@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace InkLink
 {
@@ -10,8 +14,8 @@ namespace InkLink
     {
         public class Note
         {
-            public string Abbreviation { get; set; }
             public string NoteName { get; set; }
+            public string Abbreviation { get; set; }
             public string Content { get; set; }
         }
         
@@ -58,12 +62,28 @@ namespace InkLink
                 note5
             };
 
+            foreach (var note in notes)
+            {
+                note.Abbreviation = GetAbbrevation(note.NoteName);
+            }
+            
             NotesList.ItemsSource = notes;
         }
 
         private void BtnClose_OnClick(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private string GetAbbrevation(string noteName)
+        {
+            var words = noteName.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            return words.Aggregate("", (current, word) => current + char.ToUpper(word[0]));
+        }
+
+        private void NotesList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            NoteContent.Text = Content.ToString();
         }
     }
 }

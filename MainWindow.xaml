@@ -32,7 +32,7 @@
                 </Grid.ColumnDefinitions>
                 
                 <Label Grid.Column="1"
-                       Content="Note Name"
+                       Content="InkLink"
                        HorizontalAlignment="Center"
                        FontFamily="{StaticResource RalewayRegular}"
                        FontSize="14"/>
@@ -66,7 +66,7 @@
             <Grid Grid.Row="1">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1.5*"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     
@@ -121,24 +121,35 @@
                             <ListView Grid.Row="1" BorderBrush="Transparent" 
                                       Background="Transparent" 
                                       Margin="5,10,5,10"
-                                      x:Name="NotesList">
+                                      x:Name="NotesList"
+                                      SelectionChanged="NotesList_OnSelectionChanged">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid>
+                                        <Grid Margin="0,5,0,5">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="1*"/>
                                             </Grid.ColumnDefinitions>
-                                            <Border Grid.Column="0" CornerRadius="10">
+                                            <Border Grid.Column="0" CornerRadius="10" 
+                                                    BorderBrush="CornflowerBlue" 
+                                                    BorderThickness="2"
+                                                    Height="40"
+                                                    Width="40">
                                                 <Label x:Name="NoteLabelAbbreviation"
-                                                       FontFamily="{StaticResource RalewayRegular}"/>
+                                                       FontFamily="{StaticResource RalewayRegular}"
+                                                       Content="{Binding Abbreviation}"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"
+                                                       FontSize="10"/>
                                             </Border>
                                             <Label Grid.Column="1"
                                                    x:Name="NoteLabel"
                                                    FontFamily="{StaticResource RalewayRegular}"
                                                    Margin="10,0,0,0"
                                                    Foreground="Black"
-                                                   Content="{Binding NoteName}"/>
+                                                   Content="{Binding NoteName}"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center"/>
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>

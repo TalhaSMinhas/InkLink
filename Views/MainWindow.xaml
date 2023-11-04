@@ -44,12 +44,14 @@
                        FontSize="16"/>
                 
                 <Button Grid.Column="2"
+                        x:Name="BtnMinimise"
                         BorderBrush="Transparent"
                         Background="Transparent"
                         Content="&#xE738;"
                         FontFamily="Segoe MDL2 Assets"
                         FontSize="16"
-                        Click="ButtonBase_OnClick"/>
+                        Click="BtnMinimise_OnClick"
+                        VerticalAlignment="Bottom"/>
                 
                 <Button Grid.Column="3"
                         x:Name="BtnMaximise"

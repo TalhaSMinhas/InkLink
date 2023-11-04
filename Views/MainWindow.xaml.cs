@@ -11,12 +11,8 @@ namespace InkLink.Views
     /// </summary>
     public partial class MainWindow
     {
-        public class Note
-        {
-            public string NoteName { get; set; }
-            public string Abbreviation { get; set; }
-            public string Content { get; set; }
-        }
+
+        public List<Note> Notes = new List<Note>();
         
         public MainWindow()
         {
@@ -63,8 +59,14 @@ namespace InkLink.Views
 
             foreach (var note in notes)
             {
-                note.Abbreviation = GetAbbrevation(note.NoteName);
+                note.Abbreviation = Note.GetAbbrevation(note.NoteName);
             }
+            
+            Notes.Add(note1);
+            Notes.Add(note2);
+            Notes.Add(note3);
+            Notes.Add(note4);
+            Notes.Add(note5);
             
             NotesList.ItemsSource = notes;
         }
@@ -72,12 +74,6 @@ namespace InkLink.Views
         private void BtnClose_OnClick(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        private string GetAbbrevation(string noteName)
-        {
-            var words = noteName.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            return words.Aggregate("", (current, word) => current + char.ToUpper(word[0]));
         }
 
         private void NotesList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -90,7 +86,7 @@ namespace InkLink.Views
             WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
         }
 
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        private void BtnMinimise_OnClick(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
         }

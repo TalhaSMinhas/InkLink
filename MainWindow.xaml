@@ -22,7 +22,7 @@
             </Grid.RowDefinitions>
             
             <!-- Top Control Bar: Note Name, minimize maximise and close -->
-            <Grid Grid.Row="0">
+            <Grid Grid.Row="0" Margin="5,0,5,10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.5*"/>
                     <ColumnDefinition Width="3*"/>
@@ -30,6 +30,12 @@
                     <ColumnDefinition Width="0.3*"/>
                     <ColumnDefinition Width="0.3*"/>
                 </Grid.ColumnDefinitions>
+                
+                <Image Grid.Column="0"
+                       Source="InkLink.png"
+                       Height="20"
+                       Width="20"
+                       HorizontalAlignment="Left"/>
                 
                 <Label Grid.Column="1"
                        Content="InkLink"

@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
-namespace InkLink
+namespace InkLink.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -84,6 +83,16 @@ namespace InkLink
         private void NotesList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             NoteContent.Text = Content.ToString();
+        }
+
+        private void BtnMaximise_OnClick(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+        }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
         }
     }
 }

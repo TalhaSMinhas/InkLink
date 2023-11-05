@@ -109,7 +109,8 @@
                                             Background="Transparent"
                                             FontSize="12"
                                             x:Name="BtnAddNote"
-                                            Height="35"/>
+                                            Height="35"
+                                            Click="BtnAddNote_OnClick"/>
                                     
                                     <Button Grid.Column="1"
                                             Content="&#xE74E;"
@@ -135,6 +136,7 @@
                                       Background="Transparent" 
                                       Margin="5,10,5,10"
                                       x:Name="NotesList"
+                                      ItemsSource="{Binding Notes}"
                                       SelectionChanged="NotesList_OnSelectionChanged">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
@@ -178,7 +180,10 @@
                                  Foreground="Black"
                                  BorderBrush="Transparent"
                                  Background="Transparent"
-                                 x:Name="NoteContent"/>
+                                 x:Name="NoteContent"
+                                 DataContext="{Binding ElementName=NotesList}"
+                                 Text="{Binding SelectedItem.Content}"
+                                 TextWrapping="Wrap"/>
                     </Grid>
                 </Grid>
             </Grid>

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 
 namespace InkLink.Views
 {
@@ -12,11 +14,12 @@ namespace InkLink.Views
     public partial class MainWindow
     {
 
-        public List<Note> Notes = new List<Note>();
+        public ObservableCollection<Note> Notes { get; set; } = new ObservableCollection<Note>();
         
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
             
             var note1 = new Note
             {
@@ -67,18 +70,23 @@ namespace InkLink.Views
             Notes.Add(note3);
             Notes.Add(note4);
             Notes.Add(note5);
-            
-            NotesList.ItemsSource = notes;
         }
-
-        private void BtnClose_OnClick(object sender, RoutedEventArgs e)
+        
+        private void BtnAddNote_OnClick(object sender, RoutedEventArgs e)
         {
-            this.Close();
-        }
+            Note newNote = new Note
+            {
+                Abbreviation = "New Abbreviation",
+                NoteName = "New Note",
+                Content = "New content"
+            };
 
+            Notes.Add(newNote); // Add the new note to the collection
+        }
+        
         private void NotesList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            NoteContent.Text = Content.ToString();
+            
         }
 
         private void BtnMaximise_OnClick(object sender, RoutedEventArgs e)
@@ -89,6 +97,18 @@ namespace InkLink.Views
         private void BtnMinimise_OnClick(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
+        }
+        
+        private void BtnClose_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+        
+        private FlowDocument  ConvertToFlowDocument(string content)
+        {
+            FlowDocument flowDocument = new FlowDocument();
+            flowDocument.Blocks.Add(new Paragraph(new Run(content)));
+            return flowDocument;
         }
     }
 }

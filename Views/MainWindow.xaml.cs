@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
+using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -103,12 +105,12 @@ namespace InkLink.Views
         {
             this.Close();
         }
-        
-        private FlowDocument  ConvertToFlowDocument(string content)
+
+        private void Serialize(Note note)
         {
-            FlowDocument flowDocument = new FlowDocument();
-            flowDocument.Blocks.Add(new Paragraph(new Run(content)));
-            return flowDocument;
+            var fileName = $"{note}.json";
+            string jsonString = JsonSerializer.Serialize(note);
+            File.WriteAllText(fileName, jsonString);
         }
     }
 }

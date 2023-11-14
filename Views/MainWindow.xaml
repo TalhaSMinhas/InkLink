@@ -33,8 +33,8 @@
                 
                 <Image Grid.Column="0"
                        Source="/Images/InkLink.png"
-                       Height="15"
-                       Width="15"
+                       Height="25"
+                       Width="25"
                        HorizontalAlignment="Left"/>
                 
                 <Label Grid.Column="1"
@@ -182,8 +182,9 @@
                                  Background="Transparent"
                                  x:Name="NoteContent"
                                  DataContext="{Binding ElementName=NotesList}"
-                                 Text="{Binding SelectedItem.Content}"
-                                 TextWrapping="Wrap"/>
+                                 Text="{Binding SelectedItem.Content, Mode=TwoWay}"
+                                 TextWrapping="Wrap"
+                                 AcceptsReturn="True"/>
                     </Grid>
                 </Grid>
             </Grid>
